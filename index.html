@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>蓝电E5共享收益计算器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>蓝电E5 共享收益计算器</h1>
+        <p class="sub-title">输入你的用车习惯，预测3年共享收益</p>
+
+        <!-- 所在城市 - 升级为省份+城市两级联动 -->
+        <div class="input-group">
+            <label>所在省份</label>
+            <select id="provinceSelect">
+                <option value="上海">上海（直辖市）</option>
+                <option value="江苏" selected>江苏省</option>
+                <option value="浙江">浙江省</option>
+                <option value="安徽">安徽省</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>所在城市</label>
+            <select id="citySelect">
+                <!-- 城市列表会通过 JavaScript 动态加载，这里留空 -->
+            </select>
+            <div class="city-note">*不同城市租金略有差异</div>
+        </div>
+
+        <div class="input-group">
+            <label>日均闲置时长 (小时/天)</label>
+            <input type="range" id="idleHours" min="0" max="12" step="0.5" value="4">
+            <div class="value-display">
+                <span id="hoursValue">4</span> 小时
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="weekendUse"> 周末我需要自用（会影响收益）
+            </label>
+        </div>
+
+        <!-- 计算按钮 -->
+        <button id="calcBtn">计算我的共享收益</button>
+
+        <!-- 结果卡片 (默认隐藏) -->
+        <div class="result-card" id="resultCard">
+            <h2>🎉 您的3年收益预测</h2>
+            <div class="result-item">
+                <span>所在城市</span>
+                <span class="result-value" id="displayCity">上海</span>
+            </div>
+            <div class="result-item">
+                <span>月均收益</span>
+                <span class="result-value" id="monthlyEarning">0元</span>
+            </div>
+            <div class="result-item highlight">
+                <span>3年总收益</span>
+                <span class="result-value" id="totalEarning">0元</span>
+            </div>
+            <div class="result-item">
+                <span>成本回收周期</span>
+                <span class="result-value" id="paybackPeriod">0个月</span>
+            </div>
+            <p class="disclaimer">*基于合作平台历史数据估算，实际收益以平台结算为准</p>
+            <button id="shareBtn" class="share-btn">📸 生成收益海报</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
